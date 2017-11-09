@@ -124,7 +124,7 @@ namespace SAM.API.Wrappers
                 return this.Call<bool, NativeClearAchievement>(this.Functions.ClearAchievement, this.ObjectAddress, name);
             }
 
-            return this.Call<bool, NativeSetAchievement>(this.Functions.SetAchievement, this.ObjectAddress, name);
+            return false; //ALTERED
         }
         #endregion
 

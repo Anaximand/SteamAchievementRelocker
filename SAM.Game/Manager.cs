@@ -434,7 +434,8 @@ namespace SAM.Game
                 }
 
                 bool isAchieved;
-                if (this._SteamClient.SteamUserStats.GetAchievementState(def.Id, out isAchieved) == false)
+                
+                if (this._SteamClient.SteamUserStats.GetAchievementState(def.Id, out isAchieved) == false || !isAchieved) //ALTERED
                 {
                     continue;
                 }
@@ -473,6 +474,7 @@ namespace SAM.Game
 
                 this.AddAchievementToIconQueue(info, false);
                 this._AchievementListView.Items.Add(item);
+               
                 //this.Achievements.Add(info.Id, info);
             }
             this._AchievementListView.EndUpdate();
