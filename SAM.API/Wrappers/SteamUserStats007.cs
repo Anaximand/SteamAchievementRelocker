@@ -108,23 +108,15 @@ namespace SAM.API.Wrappers
         }
         #endregion
 
-        #region SetAchievementState
-        [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
-        [return: MarshalAs(UnmanagedType.I1)]
-        private delegate bool NativeSetAchievement(IntPtr self, string name);
-
+        #region ClearAchievement
         [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
         [return: MarshalAs(UnmanagedType.I1)]
         private delegate bool NativeClearAchievement(IntPtr self, string name);
-
-        public bool SetAchievement(string name, bool state)
+        
+        //ALTERED
+        public bool ClearAchievement(string name, bool state)
         {
-            if (state == false)
-            {
-                return this.Call<bool, NativeClearAchievement>(this.Functions.ClearAchievement, this.ObjectAddress, name);
-            }
-
-            return false; //ALTERED
+            return this.Call<bool, NativeClearAchievement>(this.Functions.ClearAchievement, this.ObjectAddress, name);
         }
         #endregion
 

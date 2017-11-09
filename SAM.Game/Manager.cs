@@ -558,27 +558,16 @@ namespace SAM.Game
             {
                 return 0;
             }
-
-            var achievements = new List<Stats.AchievementInfo>();
-            foreach (ListViewItem item in this._AchievementListView.Items)
-            {
-                var achievementInfo = item.Tag as Stats.AchievementInfo;
-                if (achievementInfo != null &&
-                    achievementInfo.IsAchieved != item.Checked)
-                {
-                    achievementInfo.IsAchieved = item.Checked;
-                    achievements.Add(item.Tag as Stats.AchievementInfo);
-                }
-            }
-
-            if (achievements.Count == 0)
-            {
-                return 0;
-            }
-
+            
+            //ALTERED
+            List<Stats.AchievementInfo> achievements = this._AchievementListView.Items.Cast<ListViewItem>()
+                                                                                      .Where(n => n.Checked == false)
+                                                                                      .Select(n => n.Tag)
+                                                                                      .OfType<Stats.AchievementInfo>()
+                                                                                      .ToList();
             foreach (Stats.AchievementInfo info in achievements)
             {
-                if (this._SteamClient.SteamUserStats.SetAchievement(info.Id, info.IsAchieved) == false)
+                if (this._SteamClient.SteamUserStats.ClearAchievement(info.Id, info.IsAchieved) == false)
                 {
                     MessageBox.Show(
                         this,
