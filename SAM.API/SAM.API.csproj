@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SAM.API</RootNamespace>
-    <AssemblyName>SAM.API</AssemblyName>
+    <AssemblyName>SAD.API</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>Pink.ico</ApplicationIcon>

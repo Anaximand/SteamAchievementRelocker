@@ -9,10 +9,10 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SAM.Picker</RootNamespace>
-    <AssemblyName>SAM.Picker</AssemblyName>
+    <AssemblyName>SAD.Picker</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>SAM.ico</ApplicationIcon>
+    <ApplicationIcon>ffe500-steam-48.ico</ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -111,6 +111,7 @@
     <None Include="Resources\magnifier.png" />
     <None Include="Resources\television-test.png" />
     <None Include="Resources\download-cloud.png" />
+    <Content Include="ffe500-steam-48.ico" />
     <Content Include="SAM.ico" />
   </ItemGroup>
   <ItemGroup>
