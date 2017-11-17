@@ -138,9 +138,9 @@ namespace SAM.Game
                     return;
                 }
 
+                ResetObjectStat(statInfo);
                 if (statInfo.IsModified)
                 {
-                    ResetObjectStat(statInfo);
                     StoreStatistics(new List<Stats.StatInfo> { statInfo });
                 }
 ;            }
