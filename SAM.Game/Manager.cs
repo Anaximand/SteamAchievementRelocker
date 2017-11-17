@@ -71,7 +71,9 @@ namespace SAM.Game
             this._StatisticsDataGridView.Columns[0].DataPropertyName = "DisplayName";
 
             this._StatisticsDataGridView.Columns.Add("value", "Value");
-            this._StatisticsDataGridView.Columns[1].ReadOnly = this._EnableStatsEditingCheckBox.Checked == false;
+            // ALTERED START
+            this._StatisticsDataGridView.Columns[1].ReadOnly = true;
+            // ALTERED END
             this._StatisticsDataGridView.Columns[1].Width = 90;
             this._StatisticsDataGridView.Columns[1].DataPropertyName = "Value";
 
@@ -79,6 +81,18 @@ namespace SAM.Game
             this._StatisticsDataGridView.Columns[2].ReadOnly = true;
             this._StatisticsDataGridView.Columns[2].Width = 200;
             this._StatisticsDataGridView.Columns[2].DataPropertyName = "Extra";
+
+            // ALTERED START
+            DataGridViewButtonColumn resetStatisticGridButton = new DataGridViewButtonColumn
+            {
+                Name = "reset",
+                HeaderText = "Reset",
+                Text = "Reset",
+                UseColumnTextForButtonValue = true
+            };
+            this._StatisticsDataGridView.CellClick += statisticsDataGridViewe_CellClick;
+            this._StatisticsDataGridView.Columns.Add(resetStatisticGridButton);
+            // ALTERED END
 
             this._StatisticsDataGridView.DataSource = new BindingSource
             {
@@ -106,6 +120,50 @@ namespace SAM.Game
             //this.UserStatsStoredCallback = new API.Callback(1102, new API.Callback.CallbackFunction(this.OnUserStatsStored));
             this.RefreshStats();
         }
+
+        // ALTERED SATRT
+        private void statisticsDataGridViewe_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == _StatisticsDataGridView.Columns["reset"].Index)
+            {
+                Stats.StatInfo statInfo = _Statistics[e.RowIndex];
+                if (statInfo.IsIncrementOnly)
+                {
+                    MessageBox.Show(
+                        this,
+                        String.Format("Can't reset \"{0}\" statistic.", statInfo.Extra) ,
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    return;
+                }
+
+                if (statInfo.IsModified)
+                {
+                    ResetObjectStat(statInfo);
+                    StoreStatistics(new List<Stats.StatInfo> { statInfo });
+                }
+;            }
+        }
+
+        private void ResetObjectStat(Stats.StatInfo statInfo)
+        {
+            if (statInfo is Stats.IntStatInfo)
+            {
+                Stats.IntStatInfo intStat = (Stats.IntStatInfo)statInfo;
+                intStat.Value = "0";
+            }
+            else if (statInfo is Stats.FloatStatInfo)
+            {
+                Stats.FloatStatInfo floatStat = (Stats.FloatStatInfo)statInfo;
+                floatStat.Value = "0";
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+        // ALTERED END
 
         private void AddAchievementIcon(Stats.AchievementInfo info, Image icon)
         {
@@ -582,14 +640,15 @@ namespace SAM.Game
             return achievements.Count;
         }
 
-        private int StoreStatistics()
+        // ALTERED
+        private int StoreStatistics(List<Stats.StatInfo> statInfo)
         {
-            if (this._Statistics.Count == 0)
+            if (statInfo.Count == 0)
             {
                 return 0;
             }
 
-            var statistics = this._Statistics.Where(stat => stat.IsModified == true).ToList();
+            var statistics = statInfo.Where(stat => stat.IsModified == true).ToList();
             if (statistics.Count == 0)
             {
                 return 0;
@@ -600,9 +659,8 @@ namespace SAM.Game
                 if (stat is Stats.IntStatInfo)
                 {
                     var intStat = (Stats.IntStatInfo)stat;
-                    if (this._SteamClient.SteamUserStats.SetStatValue(
-                        intStat.Id,
-                        intStat.IntValue) == false)
+                    // ALTERED
+                    if (this._SteamClient.SteamUserStats.ResetIntStatValue(intStat.Id) == false)
                     {
                         MessageBox.Show(
                             this,
@@ -616,9 +674,9 @@ namespace SAM.Game
                 else if (stat is Stats.FloatStatInfo)
                 {
                     var floatStat = (Stats.FloatStatInfo)stat;
-                    if (this._SteamClient.SteamUserStats.SetStatValue(
-                        floatStat.Id,
-                        floatStat.FloatValue) == false)
+                    
+                    // ALTERED
+                    if (this._SteamClient.SteamUserStats.ResetFloatStatValue(floatStat.Id) == false)
                     {
                         MessageBox.Show(
                             this,
@@ -711,7 +769,8 @@ namespace SAM.Game
                 return;
             }
 
-            int stats = this.StoreStatistics();
+            // ALTERED
+            int stats = this.StoreStatistics(_Statistics.ToList());
             if (stats < 0)
             {
                 this.RefreshStats();
@@ -753,12 +812,7 @@ namespace SAM.Game
                 }
             }
         }
-
-        private void OnStatAgreementChecked(object sender, EventArgs e)
-        {
-            this._StatisticsDataGridView.Columns[1].ReadOnly = this._EnableStatsEditingCheckBox.Checked == false;
-        }
-
+        
         private void OnStatCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var view = (DataGridView)sender;

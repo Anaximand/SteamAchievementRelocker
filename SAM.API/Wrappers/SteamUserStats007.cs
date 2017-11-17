@@ -63,33 +63,35 @@ namespace SAM.API.Wrappers
         }
         #endregion
 
-        #region SetStatValue (int)
+        // ALTERED
+        #region ResetIntStatValue (int)
         [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
         [return: MarshalAs(UnmanagedType.I1)]
         private delegate bool NativeSetStatInt(IntPtr self, string name, int data);
 
-        public bool SetStatValue(string name, int value)
+        public bool ResetIntStatValue(string name)
         {
             return this.Call<bool, NativeSetStatInt>(
                 this.Functions.SetStatInteger,
                 this.ObjectAddress,
                 name,
-                value);
+                0);
         }
         #endregion
 
-        #region SetStatValue (float)
+        // ALTERED
+        #region ResetFloatStatValue (float)
         [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
         [return: MarshalAs(UnmanagedType.I1)]
         private delegate bool NativeSetStatFloat(IntPtr self, string name, float data);
 
-        public bool SetStatValue(string name, float value)
+        public bool ResetFloatStatValue(string name)
         {
             return this.Call<bool, NativeSetStatFloat>(
                 this.Functions.SetStatFloat,
                 this.ObjectAddress,
                 name,
-                value);
+                0f);
         }
         #endregion
 
