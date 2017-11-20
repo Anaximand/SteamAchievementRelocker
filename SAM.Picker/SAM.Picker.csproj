@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SAM.Picker</RootNamespace>
-    <AssemblyName>SAD.Picker</AssemblyName>
+    <AssemblyName>SAR</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>ffe500-steam-48.ico</ApplicationIcon>

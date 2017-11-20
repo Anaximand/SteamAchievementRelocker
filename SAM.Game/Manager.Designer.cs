@@ -28,19 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ToolStripSeparator _ToolStripSeparator1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manager));
             this._MainToolStrip = new System.Windows.Forms.ToolStrip();
             this._StoreButton = new System.Windows.Forms.ToolStripButton();
             this._ReloadButton = new System.Windows.Forms.ToolStripButton();
             this._ResetButton = new System.Windows.Forms.ToolStripButton();
-            this._AchievementImageList = new System.Windows.Forms.ImageList(this.components);
+            this._AchievementImageList = new System.Windows.Forms.ImageList();
             this._MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this._CountryStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._GameStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._DownloadStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this._CallbackTimer = new System.Windows.Forms.Timer(this.components);
+            this._CallbackTimer = new System.Windows.Forms.Timer();
             this._MainTabControl = new System.Windows.Forms.TabControl();
             this._AchievementsTabPage = new System.Windows.Forms.TabPage();
             this._AchievementListView = new SAM.Game.DoubleBufferedListView();
@@ -270,7 +269,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(640, 50);
             this.Name = "Manager";
-            this.Text = "Steam Achievement Destroyer 1.0";
+            this.Text = "Steam Achievement Relocker 1.0";
             this._MainToolStrip.ResumeLayout(false);
             this._MainToolStrip.PerformLayout();
             this._MainStatusStrip.ResumeLayout(false);
