@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Easy to use classes for accessing the Steam API.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gibbed")]
-[assembly: AssemblyProduct("SAM.API")]
+[assembly: AssemblyProduct("SAR.API")]
 [assembly: AssemblyCopyright("Copyright © Gibbed 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

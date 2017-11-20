@@ -311,13 +311,13 @@ namespace SAM.Picker
 
             try
             {
-                Process.Start("SAM.Game.exe", info.Id.ToString(CultureInfo.InvariantCulture));
+                Process.Start("SAR.Game.exe", info.Id.ToString(CultureInfo.InvariantCulture));
             }
             catch (Win32Exception)
             {
                 MessageBox.Show(
                     this,
-                    "Failed to start SAM.Game.exe.",
+                    "Failed to start SAR.Game.exe.",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

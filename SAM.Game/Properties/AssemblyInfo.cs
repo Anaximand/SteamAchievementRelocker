@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("A manager for game achievements in Steam.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gibbed")]
-[assembly: AssemblyProduct("SAM.Game")]
+[assembly: AssemblyProduct("SAR.Game")]
 [assembly: AssemblyCopyright("Copyright © Gibbed 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

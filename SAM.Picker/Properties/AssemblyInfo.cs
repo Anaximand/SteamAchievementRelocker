@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("A game picker for the Steam Achievement Manager.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gibbed")]
-[assembly: AssemblyProduct("SAM.Picker")]
+[assembly: AssemblyProduct("SAR.Picker")]
 [assembly: AssemblyCopyright("Copyright © Gibbed 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
