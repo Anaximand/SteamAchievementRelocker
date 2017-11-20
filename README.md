@@ -1,4 +1,4 @@
-# SAD
+# SAR
 
 This is modified version of SAM (https://github.com/gibbed/SteamAchievementManager) that allows only for removal of achivements
 
