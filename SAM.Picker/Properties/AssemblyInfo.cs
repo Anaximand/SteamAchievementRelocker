@@ -27,8 +27,8 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Steam Achievement Manager Picker")]
-[assembly: AssemblyDescription("A game picker for the Steam Achievement Manager.")]
+[assembly: AssemblyTitle("Steam Achievement Relocker Picker")]
+[assembly: AssemblyDescription("A game picker for the Steam Achievement Relocker.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gibbed")]
 [assembly: AssemblyProduct("SAR.Picker")]

@@ -877,7 +877,7 @@ namespace SAM.Game
             {
                 MessageBox.Show(
                     this,
-                    "Sorry, but this is a protected achievement and cannot be managed with Steam Achievement Manager.",
+                    "Sorry, but this is a protected achievement and cannot be managed with Steam Achievement Relocker.",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
